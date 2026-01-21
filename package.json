@@ -2,8 +2,15 @@
   "name": "my-peak-ecosystem",
   "private": true,
   "scripts": {
-    "dev": "turbo run dev",
+    "dev": "turbo run dev --filter=web --filter=core",
+    "dev-all": "turbo run dev --filter=web --filter=core & pnpm --filter apps-cms dev",
+    "dev:web": "pnpm --filter web dev",
+    "dev:core": "pnpm --filter core dev",
+    "dev:cms": "pnpm --filter apps-cms dev",
     "build": "turbo run build",
+    "build:web": "pnpm --filter web build",
+    "build:core": "pnpm --filter core build",
+    "build:cms": "pnpm --filter apps-cms build",
     "lint": "turbo run lint"
   },
   "devDependencies": {

@@ -9,6 +9,29 @@ import '../styles/globals.css';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>My Peak | DeepTech Ecosystem</title>
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Organization",
+				"name": "My Peak",
+				"url": "https://mypeak.tech",
+				"logo": "https://mypeak.tech/logo.png"
+			}
+		</script>
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "SoftwareApplication",
+				"name": "My Peak Analytics",
+				"operatingSystem": "Web",
+				"applicationCategory": "SportsApplication",
+				"offers": {
+					"@type": "Offer",
+					"price": "0",
+					"priceCurrency": "USD"
+				}
+			}
+		</script>
 	</head>
 	<body>
 		<slot />

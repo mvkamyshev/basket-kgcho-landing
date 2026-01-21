@@ -1,2 +1,2 @@
 @import "tailwindcss";
-@import "@my-peak/ui/styles";
+@import "../../../../packages/ui/src/styles/globals.css";
