@@ -1,0 +1,75 @@
+---
+// Секция контактов турнира - footer
+import Button from '../ui/Button.astro';
+---
+
+<footer class="py-16 px-8 bg-tournament-orange">
+  <div class="max-w-5xl mx-auto">
+    <!-- Заголовок -->
+    <div class="text-center mb-16">
+      <h2 class="text-6xl md:text-7xl font-bold text-white uppercase leading-none">
+        контакты
+      </h2>
+    </div>
+
+    <!-- Грид: 3 колонки на десктопе, 1 колонка на мобилке -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- 1. Адрес -->
+      <div>
+        <h3 class="text-3xl font-bold text-white uppercase mb-4">
+          адрес
+        </h3>
+        <p class="text-base text-white font-semibold leading-relaxed">
+          ДС Юность, г. Челябинск<br />
+          пр. Свердловский, 51
+        </p>
+      </div>
+
+      <!-- 2. Телефон -->
+      <div>
+        <h3 class="text-3xl font-bold text-white uppercase mb-4">
+          телефон
+        </h3>
+        <p class="text-base text-white font-semibold leading-relaxed">
+          ДС Юность, г. Челябинск<br />
+          пр. Свердловский, 51
+        </p>
+      </div>
+
+      <!-- 3. Соцсети -->
+      <div class="flex gap-4 justify-start md:justify-end items-start">
+        <a 
+          href="#" 
+          class="w-16 h-16 hover:scale-110 transition-transform duration-200"
+          aria-label="ВКонтакте"
+        >
+          <img src="/tournament/vk.png" alt="VK" class="w-full h-full object-contain" />
+        </a>
+        <a 
+          href="#" 
+          class="w-16 h-16 hover:scale-110 transition-transform duration-200"
+          aria-label="Telegram"
+        >
+          <img src="/tournament/tg.png" alt="Telegram" class="w-full h-full object-contain" />
+        </a>
+      </div>
+
+      <!-- 4. Email -->
+      <div>
+        <h3 class="text-3xl font-bold text-white uppercase mb-4">
+          email
+        </h3>
+        <p class="text-base text-white font-semibold">
+          info@3x3tournament.ru
+        </p>
+      </div>
+
+      <!-- 5. Кнопка (занимает колонки 2-3 на десктопе) -->
+      <div class="md:col-span-2">
+        <Button variant="secondary" size="lg" class="w-full">
+          задать вопрос
+        </Button>
+      </div>
+    </div>
+  </div>
+</footer>

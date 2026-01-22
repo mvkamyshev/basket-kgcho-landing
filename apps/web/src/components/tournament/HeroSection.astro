@@ -1,0 +1,64 @@
+---
+// Hero секция для турнира КГЧО
+import Button from '../ui/Button.astro';
+import HeroCard from './HeroCard.astro';
+---
+
+<section class="relative min-h-screen flex flex-col overflow-hidden bg-black">
+  <!-- Фоновые элементы -->
+  <div class="absolute inset-0 z-0">
+    <img src="/tournament/hero-bg.png" alt="" class="absolute w-full h-full object-cover opacity-90" />
+    <img src="/tournament/bg-elements-hero.svg" alt="" class="absolute w-full h-full object-cover opacity-70 mix-blend-screen" />
+  </div>
+
+  <!-- Хедер с логотипом и навигацией -->
+  <header class="relative z-10 flex gap-4 justify-between items-center pt-6 px-12 w-full max-lg:flex-col max-md:gap-4">
+    <img src="/tournament/logo.svg" alt="Логотип КГЧО" class="w-60 h-auto" />
+    
+    <nav class="hidden lg:flex gap-4 items-center">
+      <a href="#main" class="text-lg font-bold text-white no-underline uppercase transition-colors duration-200 hover:text-tournament-orange">Главная</a>
+      <a href="#headliners" class="text-lg font-bold text-white no-underline uppercase transition-colors duration-200 hover:text-tournament-orange">Хедлайнеры</a>
+      <a href="#schedule" class="text-lg font-bold text-white no-underline uppercase transition-colors duration-200 hover:text-tournament-orange">программа</a>
+      <a href="#shop" class="text-lg font-bold text-white no-underline uppercase transition-colors duration-200 hover:text-tournament-orange">магазин</a>
+      <a href="#partners" class="text-lg font-bold text-white no-underline uppercase transition-colors duration-200 hover:text-tournament-orange">партнеры</a>
+      <a href="#contacts" class="text-lg font-bold text-white no-underline uppercase transition-colors duration-200 hover:text-tournament-orange">контакты</a>
+    </nav>
+  </header>
+
+  <!-- Основной контент -->
+  <div class="relative z-10 flex-1 flex flex-col items-center justify-center px-8 gap-6 text-center max-w-6xl mx-auto lg:gap-5 md:gap-4 md:py-8">
+    <!-- Большой логотип в центре -->
+    <div class="w-72 h-72 drop-shadow-orange lg:w-64 lg:h-64 md:w-52 md:h-52">
+      <img src="/tournament/logo-big.png" alt="Логотип турнира" class="w-full h-full object-contain brightness-110 contrast-110" />
+    </div>
+
+    <!-- Заголовок -->
+    <h1 class="text-5xl font-bold text-white uppercase m-0 leading-tight max-w-4xl max-lg:text-6xl max-md:text-4xl md:leading-tight">
+      МЕЖДУНАРОДНЫЙ<br />
+      ТУРНИР ПО БАСКЕТБОЛУ 3Х3
+    </h1>
+    
+    <p class="text-3xl font-bold text-tournament-orange uppercase mt-0 mb-0 lg:text-xl md:text-lg">
+      НА КУБОК ГУБЕРНАТОРА ЧЕЛЯБИНСКОЙ ОБЛАСТИ
+    </p>
+
+    <!-- Карточки с датой и местом -->
+    <div class="flex gap-5 flex-wrap justify-center mt-6">
+      <HeroCard 
+        icon="/tournament/icon-calendar.svg"
+        label="Дата проведения"
+        value="13-14 марта 2026"
+      />
+      
+      <HeroCard 
+        icon="/tournament/icon-location.svg"
+        label="Место проведения"
+        value="ДС «Юность»"
+      />
+    </div>
+
+    <!-- Кнопка -->
+    <Button variant="primary" size="lg" class="mt-5 shadow-orange hover:shadow-orange-xl lg:mt-4 md:w-full md:max-w-sm md:mt-3">Купить билеты</Button>
+  </div>
+
+</section>

@@ -1,0 +1,151 @@
+---
+// Программа турнира
+// Цвета из Figma:
+// Фон секции: #D85A21 (Orange)
+// Карточки: #0F0F0F (Dark)
+// Текст: #FFFFFF
+
+import ScheduleCard from './ScheduleCard.astro';
+
+const scheduleData = {
+  day1: [
+    { time: "10:00", event: "Церемония открытия" },
+    { time: "10:30", event: "Групповой этап - Мужчины" },
+    { time: "13:00", event: "Групповой этап - Женщины" },
+    { time: "16:00", event: "Конкурс слэм-данков (отборочный)" },
+    { time: "18:00", event: "Матч звезд" },
+    { time: "20:00", event: "Вечеринка для участников" },
+  ],
+  day2: [
+    { time: "10:00", event: "Четвертьфинал - Мужчины (1/4)" },
+    { time: "11:30", event: "Четвертьфинал - Женщины (1/4)" },
+    { time: "13:00", event: "Полуфиналы" },
+    { time: "15:00", event: "Матч за 3-е место" },
+    { time: "17:00", event: "Финал - Женщины" },
+    { time: "18:00", event: "Финал - Мужчины" },
+    { time: "19:30", event: "Церемония награждения" },
+  ]
+};
+---
+
+<section class="relative bg-tournament-orange py-[100px] px-5 overflow-hidden min-h-[900px] md:py-[60px] md:px-4" id="schedule">
+  <div class="absolute top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[40%] after:bg-linear-to-bfter:from-transparent after:to-black/60 after:z-1">
+    <img src="/tournament/bg-elements-schedule.svg" alt="" class="absolute top-0 left-1/2 -translate-x-1/2 w-full min-w-[1920px] h-auto min-h-full object-cover object-top-center" />
+  </div>
+
+  <div class="relative z-1 max-w-[800px] flex flex-col items-center self-center justify-self-center">
+    <header class="text-center mb-[60px]">
+      <h2 class="text-[80px] font-bold text-white leading-[0.9] m-0 uppercase [text-shadow:0px_4px_10px_rgba(0,0,0,0.2)] md:text-5xl">Программа турнира</h2>
+      <p class="text-lg font-semibold text-tournament-dark mt-4 mb-0 uppercase tracking-wider">Полное расписание на 2 дня</p>
+    </header>
+
+    <!-- Tabs -->
+    <div class="text-white flex gap-5 mb-[50px] bg-tournament-dark/10 p-2 rounded-xl max-lg:flex-col">
+      <button class="tournament-schedule__tab bg-transparent border-none text-tournament-dark py-4 px-[50px] rounded-lg cursor-pointer transition-all duration-300 flex flex-col items-center min-w-[200px] hover:bg-tournament-dark/5 active md:w-full md:min-w-0 md:py-4 md:px-4 md:flex-row md:justify-center md:gap-2.5 md:items-baseline" data-tab="day1">
+        <span class="text-[32px] text-white leading-none md:text-2xl">13 марта</span>
+      </button>
+      <button class="tournament-schedule__tab bg-transparent border-none text-tournament-dark py-4 px-[50px] rounded-lg cursor-pointer transition-all duration-300 flex flex-col items-center min-w-[200px] hover:bg-tournament-dark/5 md:w-full md:min-w-0 md:py-4 md:px-4 md:flex-row md:justify-center md:gap-2.5 md:items-baseline" data-tab="day2">
+        <span class="text-[32px] text-white leading-none md:text-2xl">14 марта</span>
+      </button>
+    </div>
+
+    <!-- Content -->
+    <div class="w-full relative grid grid-cols-1">
+      <!-- Day 1 List -->
+      <div class="tournament-schedule__list col-start-1 col-end-2 row-start-1 row-end-2 flex flex-col gap-4 w-full opacity-0 invisible pointer-events-none translate-y-5 transition-all duration-400 active" id="day1">
+        {scheduleData.day1.map((item) => (
+          <ScheduleCard time={item.time} event={item.event} />
+        ))}
+      </div>
+
+      <!-- Day 2 List -->
+      <div class="tournament-schedule__list col-start-1 col-end-2 row-start-1 row-end-2 flex flex-col gap-4 w-full opacity-0 invisible pointer-events-none translate-y-5 transition-all duration-400" id="day2">
+        {scheduleData.day2.map((item) => (
+          <ScheduleCard time={item.time} event={item.event} />
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const tabs = document.querySelectorAll('.tournament-schedule__tab');
+  const lists = document.querySelectorAll('.tournament-schedule__list');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetId = tab.getAttribute('data-tab');
+
+      // Update tabs
+      tabs.forEach(t => {
+        t.classList.remove('active');
+        t.classList.remove('bg-tournament-dark', 'text-white', 'shadow-[0_4px_15px_rgba(0,0,0,0.2)]');
+      });
+      tab.classList.add('active', 'bg-tournament-dark', 'text-white', 'shadow-[0_4px_15px_rgba(0,0,0,0.2)]');
+      
+      // Update tab day color for active
+      const tabDaySpans = tab.querySelectorAll('span:last-child');
+      tabDaySpans.forEach(span => {
+        span.classList.add('!text-tournament-orange', '!opacity-100');
+      });
+      
+      // Remove active day color from other tabs
+      tabs.forEach(t => {
+        if (t !== tab) {
+          const spans = t.querySelectorAll('span:last-child');
+          spans.forEach(span => {
+            span.classList.remove('!text-tournament-orange', '!opacity-100');
+          });
+        }
+      });
+
+      // Update lists
+      lists.forEach((l) => {
+        if (l.id === targetId) {
+          l.classList.add('active', 'opacity-100', 'visible', 'pointer-events-auto', 'translate-y-0');
+          l.classList.remove('opacity-0', 'invisible', 'pointer-events-none', 'translate-y-5');
+        } else {
+          l.classList.remove('active', 'opacity-100', 'visible', 'pointer-events-auto', 'translate-y-0');
+          l.classList.add('opacity-0', 'invisible', 'pointer-events-none', 'translate-y-5');
+        }
+      });
+    });
+  });
+  
+  // Hover effect for card icon
+  const cards = document.querySelectorAll('.schedule-card');
+  cards.forEach(card => {
+    const icon = card.querySelector('.schedule-card__icon');
+    if (icon) {
+      card.addEventListener('mouseenter', () => {
+        icon.classList.remove('opacity-0', '-translate-x-2.5');
+        icon.classList.add('opacity-100', 'translate-x-0');
+      });
+      card.addEventListener('mouseleave', () => {
+        icon.classList.add('opacity-0', '-translate-x-2.5');
+        icon.classList.remove('opacity-100', 'translate-x-0');
+      });
+    }
+  });
+</script>
+
+<style>
+  /* Special handling for active tab - using traditional CSS for specificity */
+  .tournament-schedule__tab.active {
+    background-color: #0F0F0F;
+    color: #FFFFFF;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+  
+  .tournament-schedule__tab.active span:last-child {
+    color: #D85A21;
+    opacity: 1;
+  }
+  
+  .tournament-schedule__list.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+</style>

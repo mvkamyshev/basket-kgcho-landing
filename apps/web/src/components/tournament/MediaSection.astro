@@ -1,0 +1,151 @@
+---
+// Медиа галерея - лучшие моменты прошлого турнира
+---
+
+<section class="w-full bg-tournament-dark flex flex-col" id="media">
+  
+  <!-- Block 1: Header & Player -->
+  <div class="relative w-full overflow-hidden flex justify-center pt-[67px] pb-[50px] z-2">
+    <!-- Background Top -->
+    <div class="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
+      <img src="/tournament/bg-elements-media.svg" class="absolute left-1/2 -translate-x-1/2 top-0 max-w-none h-auto" alt="" />
+    </div>
+
+    <div class="relative z-1 w-full max-w-[1440px] flex flex-col items-center">
+      <header class="text-center mb-[54px] md:mb-8">
+        <h2 class="text-6xl font-bold text-white leading-none m-0 md:text-5xl">Медиа галерея</h2>
+        <p class="text-base font-semibold text-white mt-2.5 mb-0 opacity-80">Лучшие моменты прошлого турнира</p>
+      </header>
+
+      <div class="w-[1160px] max-w-[95%] aspect-video bg-[#2C2C2C] border-4 border-tournament-orange rounded-[5px] shadow-[0px_4px_4px_rgba(216,90,33,1)] flex justify-center items-center relative md:border-[3px]">
+        <button class="bg-none border-none cursor-pointer w-[142px] h-[142px] transition-transform duration-200 hover:scale-105 md:w-20 md:h-20" aria-label="Воспроизвести видео">
+          <img src="/tournament/icon-play.svg" alt="Play" class="w-full h-full" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div class="relative w-full h-[46px] bg-tournament-orange z-3 md:h-[30px]"></div>
+
+  <!-- Block 2: Gallery Grid -->
+  <div class="relative w-full overflow-hidden flex justify-center pt-[50px] pb-[50px] z-1 max-lg:pt-[30px]">
+    <!-- Background Bottom -->
+    <div class="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
+      <img src="/tournament/balls_2.png" class="absolute left-1/2 -translate-x-1/2 w-[1707px] max-w-none h-auto" alt="" />
+    </div>
+
+    <div class="relative z-1 w-full max-w-[1440px] flex flex-col items-center px-4">
+      <div class="relative w-full max-w-[1414px]">
+        
+        <!-- Logo Layer (Overlapping) - скрыт на маленьких экранах -->
+        <div class="absolute top-75 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10ointer-events-none max-lg:hidden">
+          <img src="/tournament/media-logo-big.png?v=1" alt="Logo" class="w-[650px]"/>
+        </div>
+
+        <!-- Windows Grid - 5 карточек вокруг лого -->
+        <div class="gallery-grid">
+          <!-- Карточка 1: Верхняя левая -->
+          <div class="gallery-card gallery-card-1">
+            <img src="/tournament/hero-bg.png" alt="Gallery 1" class="w-full h-full object-cover opacity-70 transition-opacity duration-300 hover:opacity-100" />
+          </div>
+          
+          <!-- Карточка 2: Верхняя правая -->
+          <div class="gallery-card gallery-card-2">
+            <img src="/tournament/hero-bg.png" alt="Gallery 2" class="w-full h-full object-cover opacity-70 transition-opacity duration-300 hover:opacity-100" />
+          </div>
+          
+          <!-- Карточка 3: Средняя левая -->
+          <div class="gallery-card gallery-card-3">
+            <img src="/tournament/hero-bg.png" alt="Gallery 3" class="w-full h-full object-cover opacity-70 transition-opacity duration-300 hover:opacity-100" />
+          </div>
+          
+          <!-- Карточка 4: Средняя правая -->
+          <div class="gallery-card gallery-card-4">
+            <img src="/tournament/hero-bg.png" alt="Gallery 4" class="w-full h-full object-cover opacity-70 transition-opacity duration-300 hover:opacity-100" />
+          </div>
+          
+          <!-- Карточка 5: Нижняя центральная -->
+          <div class="gallery-card gallery-card-5">
+            <img src="/tournament/hero-bg.png" alt="Gallery 5" class="w-full h-full object-cover opacity-70 transition-opacity duration-300 hover:opacity-100" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<style>
+  .gallery-grid {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+  }
+
+  .gallery-card {
+    position: absolute;
+    width: 450px;
+    aspect-ratio: 16 / 9;
+    background: #2C2C2C;
+    border: 4px solid #D85921;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Верхняя левая - чуть выше и левее */
+  .gallery-card-1 {
+    top: -4%;
+    left: 0%;
+  }
+
+  /* Верхняя правая - чуть выше и правее */
+  .gallery-card-2 {
+    top: -4%;
+    right: 5%;
+  }
+
+  /* Средняя левая - чуть ниже середины */
+  .gallery-card-3 {
+    top: 45%;
+    left: 1%;
+  }
+
+  /* Средняя правая - чуть выше середины */
+  .gallery-card-4 {
+    top: 45%;
+    right: 0%;
+  }
+
+  /* Нижняя центральная - смещена вправо */
+  .gallery-card-5 {
+    bottom: 5%;
+    left: 51%;
+    transform: translateX(-50%);
+  }
+
+  /* Responsive: на маленьких экранах - стопка */
+  @media (max-width: 1023px) {
+    .gallery-grid {
+      aspect-ratio: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .gallery-card {
+      position: relative;
+      width: 400px;
+      max-width: 90%;
+      height: 200px;
+      transform: none;
+      top: auto;
+      left: auto;
+      right: auto;
+      bottom: auto;
+    }
+  }
+</style>
