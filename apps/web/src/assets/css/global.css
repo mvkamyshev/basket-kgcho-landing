@@ -4,10 +4,15 @@
 @source "../../../apps/**/*.{ts,tsx,astro}";
 @source "../../../packages/**/*.{ts,tsx,astro}";
 
-/* 2. THEME: Liquid Glass 2026 */
+/* 2. THEME: Tournament KGCHO 2026 */
 @theme {
   --color-zinc-50: oklch(0.985 0 0);
   --color-zinc-950: oklch(0.145 0.004 285.823);
+
+  /* Tournament colors */
+  --color-tournament-orange: #D85A21;
+  --color-tournament-dark: #0F0F0F;
+  --color-tournament-white: #FFFFFF;
 
   /* Кастомные цвета для использования в Tailwind классах */
   --color-aurora-purple: oklch(0.65 0.3 290);
@@ -15,17 +20,17 @@
   --color-brand-telegram: oklch(0.70 0.11 235);
   --color-destructive-red: oklch(0.627 0.194 28.918);
 
-  --color-primary: oklch(0.3958 0.2481 266.82);
-  --color-background: var(--color-zinc-950);
+  --color-primary: var(--color-tournament-orange);
+  --color-background: var(--color-tournament-white);
   --color-card: oklch(1 0 0 / 0.05);
   --color-muted: oklch(1 0 0 / 0.03);
-  --color-foreground: oklch(0.95 0.01 260);
+  --color-foreground: var(--color-tournament-dark);
   --color-border: oklch(1 0 0 / 0.1);
-  --color-ring: var(--color-aurora-purple);
+  --color-ring: var(--color-tournament-orange);
 
   /* Шрифты */
-  --font-body: var(--font-inter, "Inter", ui-sans-serif, system-ui, sans-serif);
-  --font-display: var(--font-inter-display, "Inter Display", ui-sans-serif, system-ui, sans-serif);
+  --font-body: "Bebas Neue", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bebas Neue", ui-sans-serif, system-ui, sans-serif;
 
   /* SPACING: THE HARD GRID */
   --spacing-0_5: 0.125rem;
@@ -46,13 +51,11 @@
 html, body {
   background-color: var(--color-background);
   color: var(--color-foreground);
-  background-image: 
-    radial-gradient(at 0% 0%, color-mix(in oklch, var(--color-aurora-blue), transparent 80%) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, color-mix(in oklch, var(--color-aurora-purple), transparent 95%) 0px, transparent 50%);
   min-height: 100vh;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-body);
 }
 
 @layer base {
